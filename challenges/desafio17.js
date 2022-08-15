@@ -1,4 +1,4 @@
-db.produtos
-  .updateOne({ nome: "Big Mac" }, { $currentDate: { ultimaModificacao: { $type: "date" } } });
-db.produtos
-  .find({ ultimaModificacao: { $exists: 1 } }, { _id: 0, nome: 1 });
+db.resumoProdutos
+  .insertOne({ franquia: "McDonalds", totalProdutos: db.produtos.countDocuments({}) });
+db.resumoProdutos
+  .find({}, { _id: 0, franquia: 1, totalProdutos: 1 });
